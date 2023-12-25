@@ -1,0 +1,11 @@
+gradio
+torch
+facenet-pytorch
+numpy
+Pillow
+opencv-python
+pytorch-gradcam
+fastapi
+websockets
+uvicorn
+grad-cam

@@ -1,0 +1,79 @@
+.social-media-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: #fff;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+}
+
+.navbar-search {
+  flex-grow: 1;
+  margin: 0 20px;
+}
+
+.search-box {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.navbar-toggle {
+  cursor: pointer;
+  display: none;
+}
+
+.hamburger-menu {
+  width: 30px;
+  height: 3px;
+  background-color: #fff;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.hamburger-menu.open {
+  background-color: transparent;
+}
+
+.choose-image-button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.choose-image-button:hover {
+  background-color: #2980b9;
+}
+
+.upload-button {
+  padding: 10px 20px;
+  background-color: #2ecc71;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.upload-button:hover {
+  background-color: #27ae60;
+}

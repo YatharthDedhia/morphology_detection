@@ -1,0 +1,81 @@
+.sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  background-color: #2c3e50;
+  color: #fff;
+  overflow-y: auto;
+  transition: 0.4s;
+  position: absolute;
+  right: 250px;
+  top: 100px;
+  border-radius: 5px;
+  left: auto;
+}
+
+.sidebar.open {
+  width: 0;
+}
+
+/* .profile-info {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #34495e;
+  } */
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+/* .profile-details {
+    flex-grow: 1;
+  }
+  
+  .profile-details h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  
+  .profile-details p {
+    font-size: 0.9rem;
+  } */
+
+/* Add this to your existing CSS file */
+/* ... (existing styles) */
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #34495e;
+}
+
+.profile-details {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.profile-details h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.profile-details p {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+/* Additional styling for the extended information */
+.profile-details p.bio {
+  font-style: italic;
+}
+
+.profile-details p.interests,
+.profile-details p.website {
+  font-weight: bold;
+  color: #3498db;
+}

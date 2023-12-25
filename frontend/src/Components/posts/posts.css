@@ -1,0 +1,101 @@
+.main-content {
+    flex-grow: 1;
+    display: flex;
+}
+
+.upload-section {
+    padding: 20px;
+    background-color: #ecf0f1;
+    border-bottom: 1px solid #bdc3c7;
+}
+
+.upload-section input,
+.upload-section button {
+    margin-bottom: 10px;
+}
+
+.post-container {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.post {
+    flex: 0 0 calc(33.33% - 20px);
+    margin: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.post img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+}
+
+.post-details {
+    padding: 15px;
+}
+
+.comment-section {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #bdc3c7;
+}
+
+.comment-input {
+    flex-grow: 1;
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+}
+
+.comment-button {
+    padding: 8px 16px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.comment {
+    padding: 10px;
+    border-top: 1px solid #bdc3c7;
+    background-color: #ecf0f1;
+}
+
+
+/* Add this to your existing CSS file */
+/* ... (existing styles) */
+
+.like-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.like-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-right: 8px;
+    position: relative;
+    left: 300px;
+    top: 50px;
+}
+
+.like-count {
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Additional styling for the like button */
+.like-button:hover {
+    color: #3498db;
+}
