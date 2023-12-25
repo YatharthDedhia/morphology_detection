@@ -1,19 +1,23 @@
+/* Main content container */
 .main-content {
     flex-grow: 1;
     display: flex;
 }
 
+/* Styling for the upload section */
 .upload-section {
     padding: 20px;
     background-color: #ecf0f1;
     border-bottom: 1px solid #bdc3c7;
 }
 
+/* Styling for input and button in the upload section */
 .upload-section input,
 .upload-section button {
     margin-bottom: 10px;
 }
 
+/* Styling for the post container */
 .post-container {
     flex-grow: 1;
     display: flex;
@@ -21,6 +25,7 @@
     padding: 20px;
 }
 
+/* Styling for each individual post */
 .post {
     flex: 0 0 calc(33.33% - 20px);
     margin: 10px;
@@ -29,16 +34,19 @@
     overflow: hidden;
 }
 
+/* Styling for post images */
 .post img {
     width: 100%;
     height: auto;
     border-radius: 10px 10px 0 0;
 }
 
+/* Styling for post details */
 .post-details {
     padding: 15px;
 }
 
+/* Styling for the comment section */
 .comment-section {
     display: flex;
     align-items: center;
@@ -46,6 +54,7 @@
     border-top: 1px solid #bdc3c7;
 }
 
+/* Styling for comment input */
 .comment-input {
     flex-grow: 1;
     padding: 8px;
@@ -54,6 +63,7 @@
     border-radius: 5px;
 }
 
+/* Styling for comment button */
 .comment-button {
     padding: 8px 16px;
     background-color: #3498db;
@@ -63,22 +73,21 @@
     cursor: pointer;
 }
 
+/* Styling for individual comments */
 .comment {
     padding: 10px;
     border-top: 1px solid #bdc3c7;
     background-color: #ecf0f1;
 }
 
-
-/* Add this to your existing CSS file */
-/* ... (existing styles) */
-
+/* Styling for the like section */
 .like-section {
     display: flex;
     align-items: center;
     margin-bottom: 8px;
 }
 
+/* Styling for the like button */
 .like-button {
     background: none;
     border: none;
@@ -90,12 +99,13 @@
     top: 50px;
 }
 
+/* Styling for the like count */
 .like-count {
     font-size: 1rem;
     color: #333;
 }
 
-/* Additional styling for the like button */
+/* Additional styling for the like button on hover */
 .like-button:hover {
     color: #3498db;
 }

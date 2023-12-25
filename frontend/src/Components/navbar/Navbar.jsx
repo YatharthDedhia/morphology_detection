@@ -1,21 +1,26 @@
-import './navbar.css'
 import React from 'react';
+import './navbar.css';
 
 const Navbar = ({
   handleImageChange,
   handleUpload,
   handleToggleNav,
   handleUploadVideo,
-  handleVideoChange
+  handleLogout
 }) => {
   return (
     <nav className="navbar">
+      {/* Brand/logo section */}
       <div className="navbar-brand">
         <span className="website-name">Social Media</span>
       </div>
+
+      {/* Search input box */}
       <div className="navbar-search">
         <input type="text" placeholder="Search" className="search-box" />
       </div>
+
+      {/* Choose Image button with associated hidden input for file selection */}
       <label htmlFor="imageInput" className="choose-image-button">
         Choose Image
       </label>
@@ -25,23 +30,15 @@ const Navbar = ({
         onChange={handleImageChange}
         style={{ display: 'none' }}
       />
+
+      {/* Upload Image button */}
       <button className="upload-button" onClick={handleUpload}>
         Upload Image
       </button>
 
-      {/* video */}
-      <label htmlFor="videoInput" className="choose-image-button">
-        Choose Video
-      </label>
-      <input
-        type="file"
-        id="videoInput"
-        onChange={handleVideoChange}
-        // accept="video/*"
-        style={{ display: 'none' }}
-      />
-      <button className="upload-button" onClick={handleUploadVideo}>
-        Upload Video
+      {/* Logout button */}
+      <button className="upload-button" onClick={handleLogout}>
+        Logout
       </button>
     </nav>
   );

@@ -8,18 +8,22 @@ from pytorch_grad_cam.utils.image import show_cam_on_image
 import warnings
 from PIL import Image
 
+# Ignore unnecessary warnings
 warnings.filterwarnings("ignore")
 
 """# Download and Load Model"""
 
+# Set device for PyTorch
 DEVICE = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 
+# Initialize MTCNN for face detection
 mtcnn = MTCNN(
     select_largest=False,
     post_process=False,
     device=DEVICE
 ).to(DEVICE).eval()
 
+# Load InceptionResnetV1 model for face classification
 model = InceptionResnetV1(
     pretrained="vggface2",
     classify=True,
@@ -27,43 +31,55 @@ model = InceptionResnetV1(
     device=DEVICE
 )
 
-checkpoint = torch.load("resnetinceptionv1_epoch_32.pth", map_location=torch.device('cpu'))
+# Load pre-trained weights for the model
+checkpoint = torch.load("resnetinceptionv1_epoch_32.pth",
+                        map_location=torch.device('cpu'))
 model.load_state_dict(checkpoint['model_state_dict'])
 model.to(DEVICE)
 model.eval()
 
 """# Model Inference"""
 
+
 def predict(input_frame):
     """Predict the label of the input_frame"""
+    # Convert the OpenCV frame to a PIL Image
     input_image = Image.fromarray(cv2.cvtColor(input_frame, cv2.COLOR_BGR2RGB))
-    
+
+    # Detect and preprocess face using MTCNN
     face = mtcnn(input_image)
     if face is None:
         raise Exception('No face detected')
-    face = face.unsqueeze(0)  # add the batch dimension
-    face = F.interpolate(face, size=(256, 256), mode='bilinear', align_corners=False)
 
-    # convert the face into a numpy array to be able to plot it
+    face = face.unsqueeze(0)  # Add the batch dimension
+    face = F.interpolate(face, size=(256, 256),
+                         mode='bilinear', align_corners=False)
+
+    # Convert the face into a numpy array for plotting
     prev_face = face.squeeze(0).permute(1, 2, 0).cpu().detach().int().numpy()
     prev_face = prev_face.astype('uint8')
 
     face = face.to(DEVICE)
     face = face.to(torch.float32)
     face = face / 255.0
-    face_image_to_plot = face.squeeze(0).permute(1, 2, 0).cpu().detach().int().numpy()
+    face_image_to_plot = face.squeeze(0).permute(
+        1, 2, 0).cpu().detach().int().numpy()
 
+    # Set up GradCAM for visualization
     target_layers = [model.block8.branch1[-1]]
-    use_cuda = True if torch.cuda.is_available() else False
+    use_cuda = torch.cuda.is_available()
     cam = GradCAM(model=model, target_layers=target_layers, use_cuda=use_cuda)
     targets = [ClassifierOutputTarget(0)]
 
+    # Generate GradCAM visualization
     grayscale_cam = cam(input_tensor=face, targets=targets, eigen_smooth=True)
     grayscale_cam = grayscale_cam[0, :]
-    visualization = show_cam_on_image(face_image_to_plot, grayscale_cam, use_rgb=True)
+    visualization = show_cam_on_image(
+        face_image_to_plot, grayscale_cam, use_rgb=True)
     face_with_mask = cv2.addWeighted(prev_face, 1, visualization, 0.5, 0)
 
     with torch.no_grad():
+        # Make prediction using the model
         output = torch.sigmoid(model(face).squeeze(0))
         real_prediction = 1 - output.item()
         fake_prediction = output.item()
@@ -73,6 +89,7 @@ def predict(input_frame):
             'fake': fake_prediction
         }
     return input_frame, face_with_mask, confidences
+
 
 # Get video file path from the user
 video_path = input("Enter the path to the video file: ")

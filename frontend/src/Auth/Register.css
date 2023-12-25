@@ -1,0 +1,47 @@
+/* Styles for the register container */
+.register-container {
+  width: 300px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 50px;
+}
+
+/* Styles for labels in the form */
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Styles for input fields in the form */
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+}
+
+/* Styles for buttons in the form */
+button {
+  background-color: #2196f3;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Styles for the error popup */
+.error-popup {
+  background-color: #ffcccc;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ff6666;
+  border-radius: 5px;
+}
+
+/* Styles for error messages within the popup */
+.error-popup p {
+  color: #ff0000;
+  margin: 0;
+}

@@ -1,3 +1,4 @@
+/* Sidebar styling */
 .sidebar {
   width: 250px;
   flex-shrink: 0;
@@ -12,40 +13,12 @@
   left: auto;
 }
 
+/* Sidebar styling when open */
 .sidebar.open {
   width: 0;
 }
 
-/* .profile-info {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    border-bottom: 1px solid #34495e;
-  } */
-
-.profile-image {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 15px;
-}
-
-/* .profile-details {
-    flex-grow: 1;
-  }
-  
-  .profile-details h3 {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-  }
-  
-  .profile-details p {
-    font-size: 0.9rem;
-  } */
-
-/* Add this to your existing CSS file */
-/* ... (existing styles) */
-
+/* Profile info section styling */
 .profile-info {
   display: flex;
   flex-direction: column;
@@ -54,26 +27,38 @@
   border-bottom: 1px solid #34495e;
 }
 
+/* Profile image styling */
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+/* Profile details section styling */
 .profile-details {
   flex-grow: 1;
   text-align: center;
 }
 
+/* Header styling for profile details */
 .profile-details h3 {
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
+/* Text styling for profile details */
 .profile-details p {
   font-size: 1rem;
   margin-bottom: 8px;
 }
 
-/* Additional styling for the extended information */
+/* Styling for bio text in profile details */
 .profile-details p.bio {
   font-style: italic;
 }
 
+/* Styling for interests and website text in profile details */
 .profile-details p.interests,
 .profile-details p.website {
   font-weight: bold;

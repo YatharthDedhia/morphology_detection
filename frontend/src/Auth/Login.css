@@ -1,0 +1,38 @@
+/* Styles for the login container */
+.login-container {
+  width: 300px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 50px;
+}
+
+/* Styles for labels in the form */
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Styles for error messages */
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+/* Styles for input fields in the form */
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+}
+
+/* Styles for buttons in the form */
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
