@@ -16,6 +16,7 @@ const Home = () => {
     const [websocket, setWebsocket] = useState(null);
     const [videoFile, setVideoFile] = useState(null);
     const videoRef = useRef(null);
+    const [websocketResponse, setWebsocketResponse] = useState(null);
 
     // Effect to check if the user is logged in
     useEffect(() => {
@@ -49,7 +50,7 @@ const Home = () => {
         if (websocket) {
             websocket.onmessage = (event) => {
                 const data = JSON.parse(event.data);
-                handleData(data);
+                setWebsocketResponse(data);
                 console.log(data.confidences.real);
             };
         }
@@ -182,6 +183,22 @@ const Home = () => {
         return new Blob([ab], { type: mimeString });
     };
 
+    // Render function to show WebSocket response on the full page
+    const renderWebSocketResponse = () => {
+        if (websocketResponse) {
+            const realConfidence = (websocketResponse.confidences.real * 100).toFixed(2);
+            const fakeConfidence = (websocketResponse.confidences.fake * 100).toFixed(2);
+
+            return (
+                <div className="full-page-response">
+                    <h1>Response</h1>
+                    <p>Real Confidence: {realConfidence}%</p>
+                    <p>Fake Confidence: {fakeConfidence}%</p>
+                </div>
+            );
+        }
+    };
+
     return (
         <div className="social-media-container">
             {/* Navbar component */}
@@ -195,20 +212,22 @@ const Home = () => {
             {/* Sidebar component */}
             <Sidebar />
             <div className="main-content">
-                <div className="post-container">
-                    {/* Render each post using the PostContainer component */}
-                    {images.map((post, index) => (
-                        <PostContainer
-                            key={index}
-                            post={post}
-                            index={index}
-                            newComment={newComment}
-                            comments={comments}
-                            handleCommentChange={handleCommentChange}
-                            handleAddComment={handleAddComment}
-                        />
-                    ))}
-                </div>
+                {renderWebSocketResponse() || (
+                    <div className="post-container">
+                        {/* Render each post using the PostContainer component */}
+                        {images.map((post, index) => (
+                            <PostContainer
+                                key={index}
+                                post={post}
+                                index={index}
+                                newComment={newComment}
+                                comments={comments}
+                                handleCommentChange={handleCommentChange}
+                                handleAddComment={handleAddComment}
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
     );
